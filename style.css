@@ -1,44 +1,66 @@
 /* General */
-body {
-    /* Set line height to 1.5 times the font size
-         and use the OS’s UI font as the website font
-       */
-    font: 100%/1.5 system-ui;
-    /* set max width to 100ch */
-    max-width: 100ch;
-    margin-inline: auto;
-    padding: 7ch;
-}
+    :root {
+        color-scheme: light dark;
+        --color-accent: burlywood;
+        accent-color: var(--color-accent);
+        --border-color: oklch(80% 3% 200)
+    }
   
-h1{
-    font-size: 400%;
-}
+    @media (prefers-color-scheme: dark) {
+        :root {
+        --border-color: oklch(50% 10% 200 / 40%); /* brighter boarder in dark mode */
+        }
+    }
+    body {
+        /* Set line height to 1.5 times the font size
+            and use the OS’s UI font as the website font
+        */
+        font: 100%/1.5 system-ui;
+        /* set max width to 100ch */
+        max-width: 100ch;
+        margin-inline: auto;
+        padding: 7ch;
+    }
+    
+    h1{
+        font-size: 400%;
+    }
 
 /* Nav Bar */
-nav{
-    display: flex;
-    border-bottom: 1px solid var(--border-color);
-    justify-content: space-evenly;
-    width: 100%;
-  }
-  
-  nav a{
-    flex: 1;
-    text-decoration: none;
-    color: inherit;
-    font-size: 20px;
-    text-align: center;
-    padding-bottom: 0.7em;
-    border-bottom: 0.4em solid transparent;
-  }
-  
-  nav a.current{
-    border-bottom: 0.4em solid var(--border-color);
-    padding-bottom: calc(0.7em - 0.4em);
-  }
-  
-  nav a:hover{
-      border-bottom: 0.4em solid var(--color-accent);
-      background-color: color-mix(in oklch, var(--color-accent), canvas 85%);
-      padding-bottom: calc(0.7em - 0.4em);
-  }
+    nav{
+        display: flex;
+        border-bottom: 1px solid var(--border-color);
+        justify-content: space-evenly;
+        width: 100%;
+    }
+    
+    nav a{
+        flex: 1;
+        text-decoration: none;
+        color: inherit;
+        font-size: 20px;
+        text-align: center;
+        padding-bottom: 0.7em;
+        border-bottom: 0.4em solid transparent;
+    }
+    
+    nav a.current{
+        border-bottom: 0.4em solid var(--border-color);
+        padding-bottom: calc(0.7em - 0.4em);
+    }
+    
+    nav a:hover{
+        border-bottom: 0.4em solid var(--color-accent);
+        background-color: color-mix(in oklch, var(--color-accent), canvas 85%);
+        padding-bottom: calc(0.7em - 0.4em);
+    }
+
+/* light/dark theme switcher */
+    .color-scheme{
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        font-size: 80%;
+        display: flex;
+        gap: 0.5rem;
+    }

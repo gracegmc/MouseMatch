@@ -7,6 +7,7 @@ function $$(selector, context = document) {
 // BUILDING NAV BAR
 let pages = [
     { url: '', title: 'Home' },
+    { url: 'matchmaking/matchmaking.html', title: 'Find Your Match!' },
     { url: 'writeup.html', title: 'Write-Up' },
     { url: 'https://github.com/gracegmc/MouseMatch', title: 'Github Repo'},
   ];
