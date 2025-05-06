@@ -14,7 +14,7 @@ let pages = [
 
 const BASE_PATH = (location.hostname === "localhost" || location.hostname === "127.0.0.1")
     ? "/projects/project3/MouseMatch/"                  // Local server
-    : "/portfolio/";         // GitHub Pages repo name
+    : "/MouseMatch/";         // GitHub Pages repo name
 
 let nav = document.createElement('nav');
 document.body.prepend(nav);
