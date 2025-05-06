@@ -37,6 +37,7 @@ for (let p of pages) {
         a.target = "_blank";
     } 
 
+    console.log(a.href)
     nav.append(a);
 }
 
