@@ -1,7 +1,7 @@
 /* General */
     :root {
         color-scheme: light dark;
-        --color-accent: burlywood;
+        --color-accent: rgb(201, 67, 148);
         accent-color: var(--color-accent);
         --border-color: oklch(80% 3% 200)
     }
@@ -20,6 +20,7 @@
         max-width: 100ch;
         margin-inline: auto;
         padding: 7ch;
+        background-color: blanchedalmond;
     }
     
     h1{
