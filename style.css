@@ -97,3 +97,17 @@
       display: block; /* Remove any weird extra space below images */
     }
   }
+
+  /* graph stuff */
+  .tooltip {
+    font-size: 12px;
+    pointer-events: none;
+    position: absolute;
+    z-index: 10;
+    background: white;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    padding: 4px 8px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+  }
+  
