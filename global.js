@@ -76,3 +76,72 @@ if ("colorScheme" in localStorage) {
 select.addEventListener('input', function (event) {
     setColorScheme(event.target.value)
 });
+
+// fetchJSON
+export async function fetchJSON(url) {
+    try {
+        // Fetch the JSON file from the given URL
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error(`Failed to fetch projects: ${response.statusText}`);
+    }
+    const data = await response.json();
+    return data;
+    } catch (error) {
+      console.error('Error fetching or parsing JSON data:', error);
+    }
+}
+
+//render mice 
+export function renderMice(mice, containerElement, headingLevel = 'h2') {
+    // Validate containerElement
+    if (!(containerElement instanceof Element)) {
+      console.error('Invalid containerElement provided to renderProjects');
+      return;
+    }
+  
+    // Validate headingLevel
+    const validHeadings = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
+    if (!validHeadings.includes(headingLevel)) {
+      console.warn(`Invalid headingLevel "${headingLevel}". Defaulting to "h2".`);
+      headingLevel = 'h2';
+    }
+  
+    // Clear the container
+    containerElement.innerHTML = '';
+    for (let m of mice){
+        // Create article element
+        const article = document.createElement('article');
+  
+        //fixing path issues between local and github host
+        const BASE_PATH = (location.hostname === "localhost" || location.hostname === "127.0.0.1")
+        ? "/labs/lab1/portfolio/"       // Local server
+        : "/portfolio/";                // GitHub Pages repo name
+
+        // Handle missing data with fallbacks
+        const name = m.name || 'Untitled Mice';
+        const gender = m.gender || "no gender defined";
+        // const image = m.image || 'https://via.placeholder.com/150';
+        const cluster = m.cluster || 'no cluster';
+        const description = m.description || 'No description provided';
+        let path = m.path || 'mice/mice_not_found.html';
+
+
+
+        path = !path.startsWith('http') ? BASE_PATH + path : path;
+
+        // console.log(`project name: ${title}, path: ${path}`)
+
+        // Populate content dynamically
+        article.innerHTML = `
+            <a href = ${path}>
+                <${headingLevel}>${name}</${headingLevel}>
+                <p class="gender"> ${gender}</p>
+                <p class="cluster"> ${cluster}</p>
+                <p>${description}</p>
+            </a>
+        `;
+        // Append article to container
+        containerElement.appendChild(article);
+    }
+}

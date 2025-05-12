@@ -10,6 +10,49 @@
     <title>Match Making</title>
 </head>
 <body>
-    <p>the interactive data stuff</p>
+    <p>In order to find your perfect mouse match, first tell us a little bit about yourself!</p>
+    <div class="container">
+        <form>
+            <!-- ask for gender -->
+            <div class="form-group">
+                <label for="name">Your Preferences:</label>
+                <select id="toggle" onchange="updateText()">
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="no pref">No preference</option>
+                </select>
+            </div>
+            <!-- energetic in the morning -->
+            <div class="form-group">
+                <label for="morning energy">How you feel when you wake up:</label>
+                <select id="toggle" onchange="updateText()">
+                    <option value="low energy in morning">zombie mode til i get caffeine</option>
+                    <option value="high energy in morning">ready to GO and conquer the world!</option>
+                    <option value="neutral energy in morning ">50/50 or idk</option>
+                </select>
+            </div>
+            <!-- energetic in the evening -->
+            <div class="form-group">
+                <label for="evening energy">Your Ideal Afternoon/Evening:</label>
+                <select id="toggle" onchange="updateText()">
+                    <option value="low energy in evening">curl up and unwind</option>
+                    <option value="high energy in evening">go out with friends!</option>
+                    <option value="neutral energy in evening ">50/50 or idk</option>
+                </select>
+            </div>
+            <!-- energetic in the evening -->
+            <div class="form-group">
+                <label for="average energy">Your Ideal Afternoon/Evening:</label>
+                <select id="toggle" onchange="updateText()">
+                    <option value="steady cruiser">steady cruiser</option>
+                    <option value="highs and lows">highs and lows</option>
+                    <option value="neutral average energy ">50/50 or idk</option>
+                </select>
+            </div>
+        </form>
+    </div>
+    <!-- Mice Display -->
+    <div class="mice"></div> 
+    <script src="matchmaking.js" type="module"></script>
 </body>
 </html>

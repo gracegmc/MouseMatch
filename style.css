@@ -65,3 +65,35 @@
         display: flex;
         gap: 0.5rem;
     }
+
+/* individual mice display formatting */
+/* Individual Project Display */
+.mice {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
+    text-decoration: none;
+  }
+  
+  .mice a {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  .mice article {
+    display: grid;
+    grid-template-rows: subgrid;
+    grid-row: span 3;
+    gap: 1em;
+    padding: 1em;
+    text-decoration: none;
+    h2 {
+      margin: 0;
+      text-decoration: none;
+    }
+    img {
+      width: 100%;
+      height: auto;
+      object-fit: cover; /* Optional: keeps the image from looking stretched */
+      display: block; /* Remove any weird extra space below images */
+    }
+  }
