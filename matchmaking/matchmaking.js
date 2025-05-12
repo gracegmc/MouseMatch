@@ -39,6 +39,7 @@ const innerWidth = width - margin.left - margin.right;
 const innerHeight = height - margin.top - margin.bottom;
 
 d3.json("mice/mice.json").then(data => {
+    console.log("DATA:", data);
   const x = d3.scaleLinear()
     .domain(d3.extent(data, d => d.avg_temp))
     .range([0, innerWidth])
