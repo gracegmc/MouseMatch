@@ -2,7 +2,7 @@ console.log("JS IS RUNNING");
 
 
 import { fetchJSON, renderMice } from '../global.js';
-const mice = await fetchJSON('./mice/mice.json');
+const mice = await fetchJSON('mice/mice.json');
 const miceContainer = document.querySelector('.mice');
 renderMice(mice, container, 'h2');
 
