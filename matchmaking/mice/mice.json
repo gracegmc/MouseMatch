@@ -1,209 +1,210 @@
 [
     {
-        "name": "f1",
-        "gender": "female",
-        "cluster": "steady cruiser/night owl/chaotic sprinter",
+        "name": "F1",
+        "gender": "Female",
+        "avg_temp": 37.387025,
+        "avg_act": 16.146920,
+        "cluster": "",
         "path": ""
-
     },
-
     {
-        "name": "f2",
-        "gender": "female",
-        "cluster": "steady cruiser/night owl/chaotic sprinter",
+        "name": "F2",
+        "gender": "Female",
+        "avg_temp": 37.334791,
+        "avg_act": 26.622362,
+        "cluster": "",
         "path": ""
-
     },
-
     {
-        "name": "f3",
-        "gender": "female",
-        "cluster": "steady cruiser/night owl/chaotic sprinter",
+        "name": "F3",
+        "gender": "Female",
+        "avg_temp": 37.047750,
+        "avg_act": 15.545874,
+        "cluster": "",
         "path": ""
-
     },
-
     {
-        "name": "f4",
-        "gender": "female",
-        "cluster": "steady cruiser/night owl/chaotic sprinter",
+        "name": "F4",
+        "gender": "Female",
+        "avg_temp": 37.341597,
+        "avg_act": 21.012977,
+        "cluster": "",
         "path": ""
-
     },
-
     {
-        "name": "f5",
-        "gender": "female",
-        "cluster": "steady cruiser/night owl/chaotic sprinter",
+        "name": "F5",
+        "gender": "Female",
+        "avg_temp": 37.762108,
+        "avg_act": 25.912074,
+        "cluster": "",
         "path": ""
-
     },
-
     {
-        "name": "f6",
-        "gender": "female",
-        "cluster": "steady cruiser/night owl/chaotic sprinter",
+        "name": "F6",
+        "gender": "Female",
+        "avg_temp": 37.293813,
+        "avg_act": 26.802580,
+        "cluster": "",
         "path": ""
-
     },
-
     {
-        "name": "f7",
-        "gender": "female",
-        "cluster": "steady cruiser/night owl/chaotic sprinter",
+        "name": "F7",
+        "gender": "Female",
+        "avg_temp": 37.399490,
+        "avg_act": 18.571997,
+        "cluster": "",
         "path": ""
-
     },
-
     {
-        "name": "f8",
-        "gender": "female",
-        "cluster": "steady cruiser/night owl/chaotic sprinter",
+        "name": "F8",
+        "gender": "Female",
+        "avg_temp": 37.341488,
+        "avg_act": 27.611967,
+        "cluster": "",
         "path": ""
-
     },
-
     {
-        "name": "f9",
-        "gender": "female",
-        "cluster": "steady cruiser/night owl/chaotic sprinter",
+        "name": "F9",
+        "gender": "Female",
+        "avg_temp": 37.016054,
+        "avg_act": 29.631879,
+        "cluster": "",
         "path": ""
-
     },
-
     {
-        "name": "f10",
-        "gender": "female",
-        "cluster": "steady cruiser/night owl/chaotic sprinter",
+        "name": "F10",
+        "gender": "Female",
+        "avg_temp": 37.006643,
+        "avg_act": 21.705183,
+        "cluster": "",
         "path": ""
-
     },
-
     {
-        "name": "f11",
-        "gender": "female",
-        "cluster": "steady cruiser/night owl/chaotic sprinter",
+        "name": "F11",
+        "gender": "Female",
+        "avg_temp": 37.773090,
+        "avg_act": 20.661767,
+        "cluster": "",
         "path": ""
-
     },
-
     {
-        "name": "f12",
-        "gender": "female",
-        "cluster": "steady cruiser/night owl/chaotic sprinter",
+        "name": "F12",
+        "gender": "Female",
+        "avg_temp": 36.833794,
+        "avg_act": 20.689169,
+        "cluster": "",
         "path": ""
-
     },
-
     {
-        "name": "f13",
-        "gender": "female",
-        "cluster": "steady cruiser/night owl/chaotic sprinter",
+        "name": "F13",
+        "gender": "Female",
+        "avg_temp": 36.774968,
+        "avg_act": 18.797423,
+        "cluster": "",
         "path": ""
-
     },
-
     {
-        "name": "m1",
-        "gender": "male",
-        "cluster": "steady cruiser/night owl/chaotic sprinter",
+        "name": "M1",
+        "gender": "Male",
+        "avg_temp": 36.701981,
+        "avg_act": 22.852476,
+        "cluster": "",
         "path": ""
-
     },
-
     {
-        "name": "m2",
-        "gender": "male",
-        "cluster": "steady cruiser/night owl/chaotic sprinter",
+        "name": "M2",
+        "gender": "Male",
+        "avg_temp": 36.916470,
+        "avg_act": 29.534885,
+        "cluster": "",
         "path": ""
-
     },
-
     {
-        "name": "m3",
-        "gender": "male",
-        "cluster": "steady cruiser/night owl/chaotic sprinter",
+        "name": "M3",
+        "gender": "Male",
+        "avg_temp": 36.564006,
+        "avg_act": 23.944315,
+        "cluster": "",
         "path": ""
-
     },
-
     {
-        "name": "m4",
-        "gender": "male",
-        "cluster": "steady cruiser/night owl/chaotic sprinter",
+        "name": "M4",
+        "gender": "Male",
+        "avg_temp": 36.512356,
+        "avg_act": 27.666112,
+        "cluster": "",
         "path": ""
-
     },
-
     {
-        "name": "m5",
-        "gender": "male",
-        "cluster": "steady cruiser/night owl/chaotic sprinter",
+        "name": "M5",
+        "gender": "Male",
+        "avg_temp": 36.732388,
+        "avg_act": 28.004331,
+        "cluster": "",
         "path": ""
-
     },
-
     {
-        "name": "m6",
-        "gender": "male",
-        "cluster": "steady cruiser/night owl/chaotic sprinter",
+        "name": "M6",
+        "gender": "Male",
+        "avg_temp": 36.516917,
+        "avg_act": 25.652498,
+        "cluster": "",
         "path": ""
-
     },
-
     {
-        "name": "m7",
-        "gender": "male",
-        "cluster": "steady cruiser/night owl/chaotic sprinter",
+        "name": "M7",
+        "gender": "Male",
+        "avg_temp": 36.798279,
+        "avg_act": 27.062617,
+        "cluster": "",
         "path": ""
-
     },
-
     {
-        "name": "m8",
-        "gender": "male",
-        "cluster": "steady cruiser/night owl/chaotic sprinter",
+        "name": "M8",
+        "gender": "Male",
+        "avg_temp": 36.738552,
+        "avg_act": 21.238075,
+        "cluster": "",
         "path": ""
-
     },
-
     {
-        "name": "m9",
-        "gender": "male",
-        "cluster": "steady cruiser/night owl/chaotic sprinter",
+        "name": "M9",
+        "gender": "Male",
+        "avg_temp": 36.220145,
+        "avg_act": 19.055031,
+        "cluster": "",
         "path": ""
-
     },
-
     {
-        "name": "m10",
-        "gender": "male",
-        "cluster": "steady cruiser/night owl/chaotic sprinter",
+        "name": "M10",
+        "gender": "Male",
+        "avg_temp": 36.735401,
+        "avg_act": 27.068206,
+        "cluster": "",
         "path": ""
-
     },
-
     {
-        "name": "m11",
-        "gender": "male",
-        "cluster": "steady cruiser/night owl/chaotic sprinter",
+        "name": "M11",
+        "gender": "Male",
+        "avg_temp": 36.677637,
+        "avg_act": 25.290938,
+        "cluster": "",
         "path": ""
-
     },
-
     {
-        "name": "m12",
-        "gender": "male",
-        "cluster": "steady cruiser/night owl/chaotic sprinter",
+        "name": "M12",
+        "gender": "Male",
+        "avg_temp": 36.476622,
+        "avg_act": 22.650968,
+        "cluster": "",
         "path": ""
-
     },
-
     {
-        "name": "m13",
-        "gender": "male",
-        "cluster": "steady cruiser/night owl/chaotic sprinter",
+        "name": "M13",
+        "gender": "Male",
+        "avg_temp": 36.848442,
+        "avg_act": 25.123334,
+        "cluster": "",
         "path": ""
-
-    },
-    ]
+    }
+]
