@@ -1,7 +1,8 @@
-import { fetchJSON, renderProjects } from '../global.js';
+import { fetchJSON, renderMice } from '../global.js';
 const mice = await fetchJSON('./mice/mice.json');
 const miceContainer = document.querySelector('.mice');
-renderProjects(projects, projectsContainer, 'h2');
+renderMice(mice, container, 'h2');
+
 
 const form = document.querySelector('form');
 
