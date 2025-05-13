@@ -27,14 +27,23 @@
     <p>In order to find your perfect mouse match, first tell us a little bit about yourself!</p>
     <div class="container">
         <form>
-            <!-- ask for gender -->
-
+            <!-- ask for gender preference -->
             <div class="form-group">
                 <label for="gender-select">Your Preferences:</label>
                 <select id="gender-select">
                     <option value="no pref">No preference</option>
                     <option value="male">Male</option>
                     <option value="female">Female</option>
+                </select>
+            </div>
+            <!-- ask for cluster preference-->
+            <div class="form-group">
+                <label for="type-select">Your Type:</label>
+                <select id="type-select">
+                    <option value="no pref">No preference</option>
+                    <option value="night owl">night owl</option>
+                    <option value="steady cruiser">steady cruiser</option>
+                    <option value="chaotic sprinter">chaotic sprinter</option>
                 </select>
             </div>
         </form>
@@ -45,8 +54,8 @@
     </div>
     <div class="graphs">
         <h2>Average activity levels of the selected mice</h2>
-        <div id="selected"></div>
         <svg id="line-plot" class="graph"></svg>
+        <div id="text-info"></div>
     </div>
 </body>
 </html>

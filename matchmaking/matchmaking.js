@@ -15,7 +15,7 @@ const chartGroup = svg_scatter.append("g")
     .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
 let xScale, yScale;
-
+let filter_gender, filt_cluster;
 // Tooltip setup
 const tooltip = d3.select("body")
     .append("div")
@@ -46,6 +46,26 @@ d3.json("mice/mice.json").then(data => {
                 filtered = allMice.filter(m => m.gender.toLowerCase() === "male");
             } else if (selected === "female") {
                 filtered = allMice.filter(m => m.gender.toLowerCase() === "female");
+            }
+
+            drawScatter(filtered);
+            drawAverage(filtered);
+        });
+    }
+
+    // Setup cluster dropdown filter
+    const clusterSelect = document.querySelector("select#type-select");
+    if (clusterSelect) {
+        clusterSelect.addEventListener("change", e => {
+            const selected = e.target.value.toLowerCase();
+            let filtered = allMice;
+            console.log
+            if (selected === "night owl") {
+                filtered = allMice.filter(m => m.cluster === "0");
+            } else if (selected === "steady cruiser") {
+                filtered = allMice.filter(m => m.cluster === "1");
+            } else if (selected === "chaotic sprinter") {
+                filtered = allMice.filter(m => m.cluster === "2");
             }
 
             drawScatter(filtered);
@@ -181,9 +201,10 @@ function isMouseSelected(selection, data) {
 }
 
 function selectedMiceText(selection) {
-    const selectedIDs = selection.map(d => d.name); // collect names
+    const selectedIDs = selection.map(d => d.name); // collect ID of selected mouse
+    
+    // Ppdate text
     const selectedDiv = d3.select("div#selected");
-
     // Clear previous text
     selectedDiv.selectAll("p").remove();
 
@@ -192,6 +213,10 @@ function selectedMiceText(selection) {
         .text(`Number selected: ${selection.length || 0}`);
     selectedDiv.append("p")
         .text(`Selected names: ${selectedIDs.length > 0 ? selectedIDs.join(", ") : "None"}`);
+    
+    // Plot selected mouse
+    // drawAverage(selection or selectedIDs)
+
 
 }
 
