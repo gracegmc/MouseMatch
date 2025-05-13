@@ -181,8 +181,18 @@ function isMouseSelected(selection, data) {
 }
 
 function selectedMiceText(selection) {
-    const selected_p = d3.select("p#selected")
-    selected_p.text(`number selected: ${selection.length || "ZERO"}`)
+    const selectedIDs = selection.map(d => d.name); // collect names
+    const selectedDiv = d3.select("div#selected");
+
+    // Clear previous text
+    selectedDiv.selectAll("p").remove();
+
+    // Append updated info
+    selectedDiv.append("p")
+        .text(`Number selected: ${selection.length || 0}`);
+    selectedDiv.append("p")
+        .text(`Selected names: ${selectedIDs.length > 0 ? selectedIDs.join(", ") : "None"}`);
+
 }
 
 function drawAverage(data){
