@@ -321,7 +321,7 @@ function drawLinePlot(selectedData) {
         .append("path")
         .attr("class", "line")
         .attr("fill", "none")
-        .attr("stroke", d => d.color)
+        .attr("stroke", d => d.color_line)
         .attr("stroke-width", 2)
         .attr("d", d => line(d.activity))
         .on("mouseover", function(event, d) {
@@ -361,7 +361,7 @@ function drawLinePlot(selectedData) {
             .attr("y", i * 20)
             .attr("width", 15)
             .attr("height", 15)
-            .attr("fill", d.color);
+            .attr("fill", d.color_line);
 
         legend.append("text")
             .attr("x", 20)
