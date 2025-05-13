@@ -177,7 +177,7 @@ function drawScatter(data) {
         .on('mouseenter', (event, d) => {
             tooltip
                 .style("display", "block")
-                .html(`<strong>${d.name}</strong><br>Gender: ${d.gender}<br>Temp: ${d.avg_temp}<br>Act: ${d.avg_act}<br>Cluster: ${d.cluster}`);
+                .html(`<strong>${d.name}</strong><br>Gender: ${d.gender}<br>Temperature: ${d.avg_temp}<br>Activity: ${d.avg_act}`);
         })
         .on('mouseleave', () => {
             tooltip.style("display", "none");
@@ -329,7 +329,7 @@ function drawLinePlot(selectedData) {
                 .attr("stroke-width", 4); // Highlight line
             lineTooltip
                 .style("display", "block")
-                .html(`<strong>${d.name}</strong><br>Gender: ${d.gender}<br>Temp: ${d.avg_temp}<br>Act: ${d.avg_act}<br>Cluster: ${d.cluster}`);
+                .html(`<strong>${d.name}</strong><br>Gender: ${d.gender}<br>Temperature: ${d.avg_temp}<br>Activity: ${d.avg_act}`);
         })
         .on("mousemove", event => {
             lineTooltip
