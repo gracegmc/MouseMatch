@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script type="module" src="../global.js"></script>
     <script type="module" src="matchmaking.js"></script>
-
+    
     <script type="module">
         import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
         // matchmaking.js will be imported automatically by the browser due to type="module"
@@ -37,43 +37,15 @@
                     <option value="female">Female</option>
                 </select>
             </div>
-
-            <!-- energetic in the morning -->
-            <div class="form-group">
-                <label for="morning energy">How you feel when you wake up:</label>
-                <select id="toggle" onchange="updateText()">
-                    <option value="low energy in morning">zombie mode til i get caffeine</option>
-                    <option value="high energy in morning">ready to GO and conquer the world!</option>
-                    <option value="neutral energy in morning ">50/50 or idk</option>
-                </select>
-            </div>
-            <!-- energetic in the evening -->
-            <div class="form-group">
-                <label for="evening energy">Your Ideal Afternoon/Evening:</label>
-                <select id="toggle" onchange="updateText()">
-                    <option value="low energy in evening">curl up and unwind</option>
-                    <option value="high energy in evening">go out with friends!</option>
-                    <option value="neutral energy in evening ">50/50 or idk</option>
-                </select>
-            </div>
-            <!-- energetic in the evening -->
-            <div class="form-group">
-                <label for="average energy">Your Avereage Energy Levels:</label>
-                <select id="toggle" onchange="updateText()">
-                    <option value="steady cruiser">steady cruiser</option>
-                    <option value="highs and lows">highs and lows</option>
-                    <option value="neutral average energy ">50/50 or idk</option>
-                </select>
-            </div>
         </form>
     </div>
-
-    
-    <!-- Mice Display -->
-
-    <h2>Average Temp vs. Activity Level</h2>
-    <svg id="scatter-plot"></svg>
-    
-    <div class="mice"></div> 
+    <div class="graphs">
+        <h2>Average Temp vs. Activity Level</h2>
+        <svg id="scatter-plot" class="graph"></svg>
+    </div>
+    <div class="graphs">
+        <h2>Average activity levels of the selected mice</h2>
+        <svg id="line-plot" class="graph"></svg>
+    </div>
 </body>
 </html>

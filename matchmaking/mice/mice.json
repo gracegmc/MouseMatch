@@ -4,7 +4,7 @@
         "gender": "Female",
         "avg_temp": 37.387025,
         "avg_act": 16.14692,
-        "cluster": "",
+        "cluster": "0",
         "path": "",
         "color": "#ff69b4"
     },
@@ -13,16 +13,17 @@
         "gender": "Female",
         "avg_temp": 37.334791,
         "avg_act": 26.622362,
-        "cluster": "",
+        "cluster": "1",
         "path": "",
         "color": "#ff69b4"
     },
+
     {
         "name": "F3",
         "gender": "Female",
         "avg_temp": 37.04775,
         "avg_act": 15.545874,
-        "cluster": "",
+        "cluster": "0",
         "path": "",
         "color": "#ff69b4"
     },
@@ -31,7 +32,7 @@
         "gender": "Female",
         "avg_temp": 37.341597,
         "avg_act": 21.012977,
-        "cluster": "",
+        "cluster": "1",
         "path": "",
         "color": "#ff69b4"
     },
@@ -40,7 +41,7 @@
         "gender": "Female",
         "avg_temp": 37.762108,
         "avg_act": 25.912074,
-        "cluster": "",
+        "cluster": "2",
         "path": "",
         "color": "#ff69b4"
     },
@@ -49,7 +50,7 @@
         "gender": "Female",
         "avg_temp": 37.293813,
         "avg_act": 26.80258,
-        "cluster": "",
+        "cluster": "0",
         "path": "",
         "color": "#ff69b4"
     },
@@ -58,7 +59,7 @@
         "gender": "Female",
         "avg_temp": 37.39949,
         "avg_act": 18.571997,
-        "cluster": "",
+        "cluster": "1",
         "path": "",
         "color": "#ff69b4"
     },
@@ -67,7 +68,7 @@
         "gender": "Female",
         "avg_temp": 37.341488,
         "avg_act": 27.611967,
-        "cluster": "",
+        "cluster": "1",
         "path": "",
         "color": "#ff69b4"
     },
@@ -76,7 +77,7 @@
         "gender": "Female",
         "avg_temp": 37.016054,
         "avg_act": 29.631879,
-        "cluster": "",
+        "cluster": "2",
         "path": "",
         "color": "#ff69b4"
     },
@@ -85,7 +86,7 @@
         "gender": "Female",
         "avg_temp": 37.006643,
         "avg_act": 21.705183,
-        "cluster": "",
+        "cluster": "1",
         "path": "",
         "color": "#ff69b4"
     },
@@ -94,7 +95,7 @@
         "gender": "Female",
         "avg_temp": 37.77309,
         "avg_act": 20.661767,
-        "cluster": "",
+        "cluster": "0",
         "path": "",
         "color": "#ff69b4"
     },
@@ -103,7 +104,7 @@
         "gender": "Female",
         "avg_temp": 36.833794,
         "avg_act": 20.689169,
-        "cluster": "",
+        "cluster": "0",
         "path": "",
         "color": "#ff69b4"
     },
@@ -112,7 +113,7 @@
         "gender": "Female",
         "avg_temp": 36.774968,
         "avg_act": 18.797423,
-        "cluster": "",
+        "cluster": "0",
         "path": "",
         "color": "#ff69b4"
     },
@@ -121,7 +122,7 @@
         "gender": "Male",
         "avg_temp": 36.701981,
         "avg_act": 22.852476,
-        "cluster": "",
+        "cluster": "0",
         "path": "",
         "color": "#1e90ff"
     },
@@ -130,7 +131,7 @@
         "gender": "Male",
         "avg_temp": 36.91647,
         "avg_act": 29.534885,
-        "cluster": "",
+        "cluster": "0",
         "path": "",
         "color": "#1e90ff"
     },
@@ -139,7 +140,7 @@
         "gender": "Male",
         "avg_temp": 36.564006,
         "avg_act": 23.944315,
-        "cluster": "",
+        "cluster": "0",
         "path": "",
         "color": "#1e90ff"
     },
@@ -148,7 +149,7 @@
         "gender": "Male",
         "avg_temp": 36.512356,
         "avg_act": 27.666112,
-        "cluster": "",
+        "cluster": "2",
         "path": "",
         "color": "#1e90ff"
     },
@@ -157,7 +158,7 @@
         "gender": "Male",
         "avg_temp": 36.732388,
         "avg_act": 28.004331,
-        "cluster": "",
+        "cluster": "1",
         "path": "",
         "color": "#1e90ff"
     },
@@ -166,7 +167,7 @@
         "gender": "Male",
         "avg_temp": 36.516917,
         "avg_act": 25.652498,
-        "cluster": "",
+        "cluster": "1",
         "path": "",
         "color": "#1e90ff"
     },
@@ -175,7 +176,7 @@
         "gender": "Male",
         "avg_temp": 36.798279,
         "avg_act": 27.062617,
-        "cluster": "",
+        "cluster": "1",
         "path": "",
         "color": "#1e90ff"
     },
@@ -184,7 +185,7 @@
         "gender": "Male",
         "avg_temp": 36.738552,
         "avg_act": 21.238075,
-        "cluster": "",
+        "cluster": "0",
         "path": "",
         "color": "#1e90ff"
     },
@@ -193,7 +194,7 @@
         "gender": "Male",
         "avg_temp": 36.220145,
         "avg_act": 19.055031,
-        "cluster": "",
+        "cluster": "0",
         "path": "",
         "color": "#1e90ff"
     },
@@ -202,7 +203,7 @@
         "gender": "Male",
         "avg_temp": 36.735401,
         "avg_act": 27.068206,
-        "cluster": "",
+        "cluster": "0",
         "path": "",
         "color": "#1e90ff"
     },
@@ -211,7 +212,7 @@
         "gender": "Male",
         "avg_temp": 36.677637,
         "avg_act": 25.290938,
-        "cluster": "",
+        "cluster": "0",
         "path": "",
         "color": "#1e90ff"
     },
@@ -220,7 +221,7 @@
         "gender": "Male",
         "avg_temp": 36.476622,
         "avg_act": 22.650968,
-        "cluster": "",
+        "cluster": "2",
         "path": "",
         "color": "#1e90ff"
     },
@@ -229,7 +230,7 @@
         "gender": "Male",
         "avg_temp": 36.848442,
         "avg_act": 25.123334,
-        "cluster": "",
+        "cluster": "1",
         "path": "",
         "color": "#1e90ff"
     }

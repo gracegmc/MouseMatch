@@ -1,42 +1,17 @@
 console.log("JS IS RUNNING");
 
-
-//import { fetchJSON, renderMice } from '../global.js';
-//const mice = await fetchJSON('./mice/mice.json');
-//const miceContainer = document.querySelector('.mice');
-//renderMice(mice, container, 'h2');
-
-
-const form = document.querySelector('form');
-
-form?.addEventListener('submit', function(event) {
-    event.preventDefault();
-
-    // store data of form here
-    const data = new FormData(this);
-
-    //get the mailto part of the url
-    let url = this.action + '?';
-
-    for (let [name, value] of data) {
-        url += `${name}=${encodeURIComponent(value)}&`
-    }
-
-    location.href = url.slice(0, -1);
-});
-
 import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
 
 // Set up SVG and margins
-const svg = d3.select("svg#scatter-plot")
+const svg_scatter = d3.select("svg#scatter-plot")
     .attr("width", 1000)
     .attr("height", 800);
 
 const margin = { top: 40, right: 40, bottom: 60, left: 70 };
-const width = +svg.attr("width") - margin.left - margin.right;
-const height = +svg.attr("height") - margin.top - margin.bottom;
+const width = +svg_scatter.attr("width") - margin.left - margin.right;
+const height = +svg_scatter.attr("height") - margin.top - margin.bottom;
 
-const chartGroup = svg.append("g")
+const chartGroup = svg_scatter.append("g")
     .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
 // Tooltip setup
@@ -72,6 +47,7 @@ d3.json("mice/mice.json").then(data => {
             }
 
             drawScatter(filtered);
+            drawAverage(filered);
         });
     }
 });
@@ -130,7 +106,8 @@ function drawScatter(data) {
         .text("Average Activity Level");
 
     // Data points
-    chartGroup.selectAll("circle")
+    const dots = chartGroup.append('g').attr('class', 'dots');
+    dots.selectAll("circle")
         .data(data)
         .enter()
         .append("circle")
@@ -139,17 +116,19 @@ function drawScatter(data) {
         .attr("r", 6)
         .attr("fill", d => d.color)
         .attr("stroke", "black")
-        .on("mouseover", (event, d) => {
-            tooltip
-                .style("display", "block")
-                .html(`<strong>${d.name}</strong><br>Gender: ${d.gender}<br>Temp: ${d.avg_temp}<br>Act: ${d.avg_act}`);
-        })
         .on("mousemove", event => {
             tooltip
                 .style("left", event.pageX + 10 + "px")
                 .style("top", event.pageY - 20 + "px");
         })
-        .on("mouseout", () => tooltip.style("display", "none"));
+        .on('mouseenter', (event, d) => {
+            tooltip
+                .style("display", "block")
+                .html(`<strong>${d.name}</strong><br>Gender: ${d.gender}<br>Temp: ${d.avg_temp}<br>Act: ${d.avg_act}`);
+        })
+        .on('mouseleave', (event) => {
+            tooltip.style("display", "none")
+        });
 
     // Mouse name labels
     chartGroup.selectAll("text.label")
@@ -161,5 +140,53 @@ function drawScatter(data) {
         .attr("text-anchor", "middle")
         .attr("font-size", "10px")
         .text(d => d.name);
+
+    // Create brush with event handlers
+    chartGroup.call(d3.brush().on('start brush end', brushed));
+
+    // Raise dots and everything after overlay
+    chartGroup.selectAll('.dots, .overlay ~ *').raise();
 }
 
+// Setting up the brush
+const brush = d3.brush()
+    .extent([[0, 0], [width, height]])
+    .on("end", brushed);
+
+chartGroup.append("g")
+    .attr("class", "brush")
+    .call(brush);
+
+function brushed(event) {
+const selection = event.selection;
+if (!selection) return;
+console.log(selection)
+const [[x0, y0], [x1, y1]] = selection;
+
+// Filter data based on the brush selection
+const filteredData = allMice.filter(d => {
+    const tempX = x(d.avg_temp);
+    const tempY = y(d.avg_act);
+    return tempX >= x0 && tempX <= x1 && tempY >= y0 && tempY <= y1;
+});
+
+// Clear the brush selection
+chartGroup.select(".brush").call(brush.move, null);
+
+// Update visualization with filtered data
+drawScatter(filteredData);
+}
+
+
+function isMiceSelected(selection, mice) {
+    // Return true if commit is within brushSelection
+    // and false if not
+    if (!selection) { 
+        return false; } 
+    console.log(selection)
+    return selection; 
+  }
+
+function drawAverage(data){
+
+}
