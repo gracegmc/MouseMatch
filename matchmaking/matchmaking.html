@@ -9,6 +9,18 @@
     <script type="module" src="../global.js"></script>
     <script type="module" src="matchmaking.js"></script>
 
+    <script type="module">
+        import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
+        // matchmaking.js will be imported automatically by the browser due to type="module"
+    </script>
+    <style>
+        #tooltip {
+            position: absolute;
+            pointer-events: none;
+            font-size: 12px;
+        }
+    </style>
+
     <title>Match Making</title>
 </head>
 <body>
@@ -58,7 +70,7 @@
     <!-- Mice Display -->
 
     <h2>Average Temp vs. Activity Level</h2>
-    <svg id="scatterplot"></svg>
+    <svg id="scatter-plot"></svg>
     
     <div class="mice"></div> 
 </body>

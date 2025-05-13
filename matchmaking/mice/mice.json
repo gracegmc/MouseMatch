@@ -3,9 +3,10 @@
         "name": "F1",
         "gender": "Female",
         "avg_temp": 37.387025,
-        "avg_act": 16.146920,
+        "avg_act": 16.14692,
         "cluster": "",
-        "path": ""
+        "path": "",
+        "color": "#ff69b4"
     },
     {
         "name": "F2",
@@ -13,15 +14,17 @@
         "avg_temp": 37.334791,
         "avg_act": 26.622362,
         "cluster": "",
-        "path": ""
+        "path": "",
+        "color": "#ff69b4"
     },
     {
         "name": "F3",
         "gender": "Female",
-        "avg_temp": 37.047750,
+        "avg_temp": 37.04775,
         "avg_act": 15.545874,
         "cluster": "",
-        "path": ""
+        "path": "",
+        "color": "#ff69b4"
     },
     {
         "name": "F4",
@@ -29,7 +32,8 @@
         "avg_temp": 37.341597,
         "avg_act": 21.012977,
         "cluster": "",
-        "path": ""
+        "path": "",
+        "color": "#ff69b4"
     },
     {
         "name": "F5",
@@ -37,23 +41,26 @@
         "avg_temp": 37.762108,
         "avg_act": 25.912074,
         "cluster": "",
-        "path": ""
+        "path": "",
+        "color": "#ff69b4"
     },
     {
         "name": "F6",
         "gender": "Female",
         "avg_temp": 37.293813,
-        "avg_act": 26.802580,
+        "avg_act": 26.80258,
         "cluster": "",
-        "path": ""
+        "path": "",
+        "color": "#ff69b4"
     },
     {
         "name": "F7",
         "gender": "Female",
-        "avg_temp": 37.399490,
+        "avg_temp": 37.39949,
         "avg_act": 18.571997,
         "cluster": "",
-        "path": ""
+        "path": "",
+        "color": "#ff69b4"
     },
     {
         "name": "F8",
@@ -61,7 +68,8 @@
         "avg_temp": 37.341488,
         "avg_act": 27.611967,
         "cluster": "",
-        "path": ""
+        "path": "",
+        "color": "#ff69b4"
     },
     {
         "name": "F9",
@@ -69,7 +77,8 @@
         "avg_temp": 37.016054,
         "avg_act": 29.631879,
         "cluster": "",
-        "path": ""
+        "path": "",
+        "color": "#ff69b4"
     },
     {
         "name": "F10",
@@ -77,15 +86,17 @@
         "avg_temp": 37.006643,
         "avg_act": 21.705183,
         "cluster": "",
-        "path": ""
+        "path": "",
+        "color": "#ff69b4"
     },
     {
         "name": "F11",
         "gender": "Female",
-        "avg_temp": 37.773090,
+        "avg_temp": 37.77309,
         "avg_act": 20.661767,
         "cluster": "",
-        "path": ""
+        "path": "",
+        "color": "#ff69b4"
     },
     {
         "name": "F12",
@@ -93,7 +104,8 @@
         "avg_temp": 36.833794,
         "avg_act": 20.689169,
         "cluster": "",
-        "path": ""
+        "path": "",
+        "color": "#ff69b4"
     },
     {
         "name": "F13",
@@ -101,7 +113,8 @@
         "avg_temp": 36.774968,
         "avg_act": 18.797423,
         "cluster": "",
-        "path": ""
+        "path": "",
+        "color": "#ff69b4"
     },
     {
         "name": "M1",
@@ -109,15 +122,17 @@
         "avg_temp": 36.701981,
         "avg_act": 22.852476,
         "cluster": "",
-        "path": ""
+        "path": "",
+        "color": "#1e90ff"
     },
     {
         "name": "M2",
         "gender": "Male",
-        "avg_temp": 36.916470,
+        "avg_temp": 36.91647,
         "avg_act": 29.534885,
         "cluster": "",
-        "path": ""
+        "path": "",
+        "color": "#1e90ff"
     },
     {
         "name": "M3",
@@ -125,7 +140,8 @@
         "avg_temp": 36.564006,
         "avg_act": 23.944315,
         "cluster": "",
-        "path": ""
+        "path": "",
+        "color": "#1e90ff"
     },
     {
         "name": "M4",
@@ -133,7 +149,8 @@
         "avg_temp": 36.512356,
         "avg_act": 27.666112,
         "cluster": "",
-        "path": ""
+        "path": "",
+        "color": "#1e90ff"
     },
     {
         "name": "M5",
@@ -141,7 +158,8 @@
         "avg_temp": 36.732388,
         "avg_act": 28.004331,
         "cluster": "",
-        "path": ""
+        "path": "",
+        "color": "#1e90ff"
     },
     {
         "name": "M6",
@@ -149,7 +167,8 @@
         "avg_temp": 36.516917,
         "avg_act": 25.652498,
         "cluster": "",
-        "path": ""
+        "path": "",
+        "color": "#1e90ff"
     },
     {
         "name": "M7",
@@ -157,7 +176,8 @@
         "avg_temp": 36.798279,
         "avg_act": 27.062617,
         "cluster": "",
-        "path": ""
+        "path": "",
+        "color": "#1e90ff"
     },
     {
         "name": "M8",
@@ -165,7 +185,8 @@
         "avg_temp": 36.738552,
         "avg_act": 21.238075,
         "cluster": "",
-        "path": ""
+        "path": "",
+        "color": "#1e90ff"
     },
     {
         "name": "M9",
@@ -173,7 +194,8 @@
         "avg_temp": 36.220145,
         "avg_act": 19.055031,
         "cluster": "",
-        "path": ""
+        "path": "",
+        "color": "#1e90ff"
     },
     {
         "name": "M10",
@@ -181,7 +203,8 @@
         "avg_temp": 36.735401,
         "avg_act": 27.068206,
         "cluster": "",
-        "path": ""
+        "path": "",
+        "color": "#1e90ff"
     },
     {
         "name": "M11",
@@ -189,7 +212,8 @@
         "avg_temp": 36.677637,
         "avg_act": 25.290938,
         "cluster": "",
-        "path": ""
+        "path": "",
+        "color": "#1e90ff"
     },
     {
         "name": "M12",
@@ -197,7 +221,8 @@
         "avg_temp": 36.476622,
         "avg_act": 22.650968,
         "cluster": "",
-        "path": ""
+        "path": "",
+        "color": "#1e90ff"
     },
     {
         "name": "M13",
@@ -205,6 +230,7 @@
         "avg_temp": 36.848442,
         "avg_act": 25.123334,
         "cluster": "",
-        "path": ""
+        "path": "",
+        "color": "#1e90ff"
     }
 ]
