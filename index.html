@@ -1,25 +1,17 @@
 <!DOCTYPE html>
 <style>
 	@import url("style.css");
-    .button {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-            button {
-                width: 100%;
-                padding: 20px 40px;
-                font-size: 1.5em;
-                background-color: #ffb3cb;
-                border: none;
-                border-radius: 8px;
-                cursor: pointer;
-                transition: background-color 0.3s ease;
-
-                &:hover {
-                    background-color: #ff78a2;
-                }
-            }
+    #landing_page {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        img {
+            width: 80%;
+            height: auto;
+            object-fit: cover; /* Optional: keeps the image from looking stretched */
+            display: block; /* Remove any weird extra space below images */
+            padding: 1em;
+        }
     }
 </style>
 <html lang="en">
@@ -31,7 +23,10 @@
 </head>
 <body>
     <h1>Welcome to MouseMatch!</h1>
-    <p>find your perfect mouse match from experiment data monitoring the activity levels of 13 mice over the span of 2 weeks.</p>
+    <p>find your perfect mouse match from experiment data monitoring the activity levels of 26 mice over the span of 2 weeks.</p>
+    <div id="landing_page">
+        <img src="images/landing_page.png">
+    </div>
     <div class="button">
         <a href="./matchmaking/matchmaking.html">
             <button>Find My Match!</button>

@@ -97,6 +97,7 @@
       display: block; /* Remove any weird extra space below images */
     }
   }
+<<<<<<< HEAD
 
   /* graph stuff */
   .tooltip {
@@ -111,3 +112,25 @@
     box-shadow: 0 0 5px rgba(0,0,0,0.1);
   }
   
+=======
+  .button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    button {
+        width: 100%;
+        padding: 20px 40px;
+        font-size: 1.5em;
+        background-color: #ffb3cb;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+            background-color: #ff78a2;
+        }
+    }
+  }
+>>>>>>> 39e763f (stuff)
