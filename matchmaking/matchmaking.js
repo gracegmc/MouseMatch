@@ -4,10 +4,10 @@ import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
 
 // Set up SVG and margins
 const svg_scatter = d3.select("svg#scatter-plot")
-    .attr("width", 1000)
-    .attr("height", 800);
+    .attr("width", 1050) // Increased from 1000
+    .attr("height", 850); // Increased from 800
 
-const margin = { top: 40, right: 40, bottom: 60, left: 70 };
+const margin = { top: 40, right: 40, bottom: 80, left: 90 }; // Increased bottom and left
 const width = +svg_scatter.attr("width") - margin.left - margin.right;
 const height = +svg_scatter.attr("height") - margin.top - margin.bottom;
 
@@ -116,9 +116,10 @@ function drawScatter(data) {
 
     chartGroup.append("text")
         .attr("x", width / 2)
-        .attr("y", height + 45)
+        .attr("y", height + 50) // Adjusted from +45
         .attr("text-anchor", "middle")
-        .attr("font-size", "12px")
+        .attr("font-size", "20px")
+        .attr("fill", "black") // Ensure visibility
         .text("Average Temperature (°C)");
 
     // Y axis with label
@@ -128,9 +129,10 @@ function drawScatter(data) {
     chartGroup.append("text")
         .attr("transform", "rotate(-90)")
         .attr("x", -height / 2)
-        .attr("y", -50)
+        .attr("y", -70) // Adjusted from -50
         .attr("text-anchor", "middle")
-        .attr("font-size", "12px")
+        .attr("font-size", "20px")
+        .attr("fill", "black") // Ensure visibility
         .text("Average Activity Level");
 
     // Data points
