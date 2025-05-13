@@ -49,7 +49,7 @@ d3.json("mice/mice.json").then(data => {
             }
 
             drawScatter(filtered);
-            drawAverage(filered);
+            drawAverage(filtered);
         });
     }
 });
@@ -158,27 +158,26 @@ function createBrushSelector(svg) {
 
 // Making brush to actually select dots
 function brushed(event) {
-    console.log(event);
     const selection = event.selection;
-    chartGroup.selectAll('circle').classed('selected', (d) =>
-      isMouseSelected(selection, d),
-    );
-    console.log(selection)
-    selectedMiceText(selection)
-  }
+    const selectedData = [];
+
+    chartGroup.selectAll('circle')
+        .classed('selected', function(d) {
+            const selected = isMouseSelected(selection, d);
+            if (selected) selectedData.push(d);
+            return selected;
+        });
+    
+    selectedMiceText(selectedData);
+}
 
 
 function isMouseSelected(selection, data) {
-    if (!selection) {
-      return false;
-    }
-    // Return true if commit is within brushSelection
-    // and false if not
-    if (!selection) { 
-        return false; } 
-    const [x0, x1] = selection.map((d) => d[0]); 
-    const [y0, y1] = selection.map((d) => d[1]); 
-    return xScale >= x0 && xScale <= x1 && yScale >= y0 && yScale <= y1; 
+    if (!selection) return false;
+    const [[x0, y0], [x1, y1]] = selection;
+    const x = xScale(+data.avg_temp);
+    const y = yScale(+data.avg_act);
+    return x >= x0 && x <= x1 && y >= y0 && y <= y1;
 }
 
 function selectedMiceText(selection) {
