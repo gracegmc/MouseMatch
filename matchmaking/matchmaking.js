@@ -15,7 +15,10 @@ const chartGroup = svg_scatter.append("g")
     .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
 let xScale, yScale;
-let filter_gender, filt_cluster;
+let filter_gender = "no preference"; // Store current gender filter state
+let filt_cluster = "no pref"; // Store current cluster filter state
+let allMice = [];
+
 // Tooltip setup
 const tooltip = d3.select("body")
     .append("div")
@@ -28,51 +31,54 @@ const tooltip = d3.select("body")
     .style("border-radius", "4px")
     .style("display", "none");
 
-let allMice = [];
-
 // Load data and draw initial plot
 d3.json("mice/mice.json").then(data => {
     allMice = data;
-    drawScatter(data); // default = all mice shown
+    drawScatter(data); // Default: all mice shown
+    drawAverage(data); // Initialize average display
 
     // Setup gender dropdown filter
     const genderSelect = document.querySelector("select#gender-select");
     if (genderSelect) {
         genderSelect.addEventListener("change", e => {
-            const selected = e.target.value.toLowerCase();
-            let filtered = allMice;
-
-            if (selected === "male") {
-                filtered = allMice.filter(m => m.gender.toLowerCase() === "male");
-            } else if (selected === "female") {
-                filtered = allMice.filter(m => m.gender.toLowerCase() === "female");
-            }
-
-            drawScatter(filtered);
-            drawAverage(filtered);
+            filter_gender = e.target.value.toLowerCase();
+            applyFilters();
         });
     }
 
     // Setup cluster dropdown filter
-    const clusterSelect = document.querySelector("select#type-select");
+    const clusterSelect = document.querySelector("select#cluster-select");
     if (clusterSelect) {
         clusterSelect.addEventListener("change", e => {
-            const selected = e.target.value.toLowerCase();
-            let filtered = allMice;
-            console.log
-            if (selected === "night owl") {
-                filtered = allMice.filter(m => m.cluster === "0");
-            } else if (selected === "steady cruiser") {
-                filtered = allMice.filter(m => m.cluster === "1");
-            } else if (selected === "chaotic sprinter") {
-                filtered = allMice.filter(m => m.cluster === "2");
-            }
-
-            drawScatter(filtered);
-            drawAverage(filtered);
+            filt_cluster = e.target.value.toLowerCase();
+            applyFilters();
         });
     }
 });
+
+// Apply both filters based on current state
+function applyFilters() {
+    let filtered = allMice;
+
+    // Apply gender filter
+    if (filter_gender === "male") {
+        filtered = filtered.filter(m => m.gender.toLowerCase() === "male");
+    } else if (filter_gender === "female") {
+        filtered = filtered.filter(m => m.gender.toLowerCase() === "female");
+    }
+
+    // Apply cluster filter
+    if (filt_cluster === "night owl") {
+        filtered = filtered.filter(m => m.cluster === "0");
+    } else if (filt_cluster === "steady cruiser") {
+        filtered = filtered.filter(m => m.cluster === "1");
+    } else if (filt_cluster === "chaotic sprinter") {
+        filtered = filtered.filter(m => m.cluster === "2");
+    }
+
+    drawScatter(filtered);
+    drawAverage(filtered);
+}
 
 // Draw scatterplot with gridlines, tooltip, and axis labels
 function drawScatter(data) {
@@ -82,7 +88,6 @@ function drawScatter(data) {
         .domain(d3.extent(data, d => +d.avg_temp))
         .range([0, width])
         .nice();
-
 
     yScale = d3.scaleLinear()
         .domain(d3.extent(data, d => +d.avg_act))
@@ -149,8 +154,8 @@ function drawScatter(data) {
                 .style("display", "block")
                 .html(`<strong>${d.name}</strong><br>Gender: ${d.gender}<br>Temp: ${d.avg_temp}<br>Act: ${d.avg_act}`);
         })
-        .on('mouseleave', (event) => {
-            tooltip.style("display", "none")
+        .on('mouseleave', () => {
+            tooltip.style("display", "none");
         });
 
     // Mouse name labels
@@ -171,11 +176,6 @@ function drawScatter(data) {
     chartGroup.selectAll('.dots, .overlay ~ *').raise();
 }
 
-// Setting up the brush
-function createBrushSelector(svg) {
-    svg.call(d3.brush());
-}
-
 // Making brush to actually select dots
 function brushed(event) {
     const selection = event.selection;
@@ -187,10 +187,9 @@ function brushed(event) {
             if (selected) selectedData.push(d);
             return selected;
         });
-    
+
     selectedMiceText(selectedData);
 }
-
 
 function isMouseSelected(selection, data) {
     if (!selection) return false;
@@ -201,9 +200,9 @@ function isMouseSelected(selection, data) {
 }
 
 function selectedMiceText(selection) {
-    const selectedIDs = selection.map(d => d.name); // collect ID of selected mouse
-    
-    // Ppdate text
+    const selectedIDs = selection.map(d => d.name); // Collect ID of selected mouse
+
+    // Update text
     const selectedDiv = d3.select("div#selected");
     // Clear previous text
     selectedDiv.selectAll("p").remove();
@@ -213,13 +212,8 @@ function selectedMiceText(selection) {
         .text(`Number selected: ${selection.length || 0}`);
     selectedDiv.append("p")
         .text(`Selected names: ${selectedIDs.length > 0 ? selectedIDs.join(", ") : "None"}`);
-    
-    // Plot selected mouse
-    // drawAverage(selection or selectedIDs)
-
-
 }
 
-function drawAverage(data){
-
+function drawAverage(data) {
+    
 }
