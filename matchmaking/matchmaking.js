@@ -222,7 +222,7 @@ function drawLinePlot(selectedData) {
     }
 
     // Log selected data for debugging
-    console.log("Selected data:", selectedData);
+    // console.log("Selected data:", selectedData);
 
     // Set up margins and dimensions
     const margin = { top: 60, right: 100, bottom: 80, left: 60 };
@@ -238,7 +238,7 @@ function drawLinePlot(selectedData) {
             const value = +d[t];
             return isNaN(value) ? 0 : value; // Fallback to 0 for invalid values
         });
-        console.log(`Activity values for ${d.name}:`, values); // Debug log
+        // console.log(`Activity values for ${d.name}:`, values); // Debug log
         return { ...d, activity: values };
     });
 
@@ -250,7 +250,7 @@ function drawLinePlot(selectedData) {
     // Y scale (activity level)
     const yMin = d3.min(activityData, d => d3.min(d.activity));
     const yMax = d3.max(activityData, d => d3.max(d.activity));
-    console.log("Y scale domain:", [yMin, yMax]); // Debug log
+    // console.log("Y scale domain:", [yMin, yMax]); // Debug log
     const yScale = d3.scaleLinear()
         .domain([Math.min(0, yMin), yMax]) // Include 0 if yMin is positive
         .range([height, 0])
