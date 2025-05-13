@@ -2,12 +2,12 @@ console.log("JS IS RUNNING");
 
 import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
 
-// Set up SVG and margins
+// Set up SVG and margins for scatter plot
 const svg_scatter = d3.select("svg#scatter-plot")
-    .attr("width", 1050) // Increased from 1000
-    .attr("height", 850); // Increased from 800
+    .attr("width", 1050)
+    .attr("height", 850);
 
-const margin = { top: 40, right: 40, bottom: 80, left: 90 }; // Increased bottom and left
+const margin = { top: 40, right: 40, bottom: 80, left: 90 };
 const width = +svg_scatter.attr("width") - margin.left - margin.right;
 const height = +svg_scatter.attr("height") - margin.top - margin.bottom;
 
@@ -19,7 +19,7 @@ let filter_gender = "no preference"; // Store current gender filter state
 let filt_cluster = "no pref"; // Store current cluster filter state
 let allMice = [];
 
-// Tooltip setup
+// Tooltip setup for scatter plot
 const tooltip = d3.select("body")
     .append("div")
     .attr("id", "tooltip")
@@ -31,11 +31,32 @@ const tooltip = d3.select("body")
     .style("border-radius", "4px")
     .style("display", "none");
 
+// Tooltip setup for line plot
+const lineTooltip = d3.select("body")
+    .append("div")
+    .attr("id", "line-tooltip")
+    .style("position", "absolute")
+    .style("pointer-events", "none")
+    .style("background", "white")
+    .style("padding", "4px 8px")
+    .style("border", "1px solid #ccc")
+    .style("border-radius", "4px")
+    .style("display", "none");
+
+// Generate time point keys (00:00, 00:10, ..., 23:50)
+const timePoints = [];
+for (let h = 0; h < 24; h++) {
+    for (let m = 0; m < 60; m += 10) {
+        const time = `${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}`;
+        timePoints.push(time);
+    }
+}
+
 // Load data and draw initial plot
 d3.json("mice/mice.json").then(data => {
     allMice = data;
     drawScatter(data); // Default: all mice shown
-    drawAverage(data); // Initialize average display
+    drawLinePlot([]); // Initialize empty line plot
 
     // Setup gender dropdown filter
     const genderSelect = document.querySelector("select#gender-select");
@@ -54,6 +75,8 @@ d3.json("mice/mice.json").then(data => {
             applyFilters();
         });
     }
+}).catch(error => {
+    console.error("Error loading JSON:", error);
 });
 
 // Apply both filters based on current state
@@ -116,10 +139,10 @@ function drawScatter(data) {
 
     chartGroup.append("text")
         .attr("x", width / 2)
-        .attr("y", height + 50) // Adjusted from +45
+        .attr("y", height + 50)
         .attr("text-anchor", "middle")
         .attr("font-size", "20px")
-        .attr("fill", "black") // Ensure visibility
+        .attr("fill", "black")
         .text("Average Temperature (°C)");
 
     // Y axis with label
@@ -129,10 +152,10 @@ function drawScatter(data) {
     chartGroup.append("text")
         .attr("transform", "rotate(-90)")
         .attr("x", -height / 2)
-        .attr("y", -70) // Adjusted from -50
+        .attr("y", -70)
         .attr("text-anchor", "middle")
         .attr("font-size", "20px")
-        .attr("fill", "black") // Ensure visibility
+        .attr("fill", "black")
         .text("Average Activity Level");
 
     // Data points
@@ -154,7 +177,7 @@ function drawScatter(data) {
         .on('mouseenter', (event, d) => {
             tooltip
                 .style("display", "block")
-                .html(`<strong>${d.name}</strong><br>Gender: ${d.gender}<br>Temp: ${d.avg_temp}<br>Act: ${d.avg_act}`);
+                .html(`<strong>${d.name}</strong><br>Gender: ${d.gender}<br>Temp: ${d.avg_temp}<br>Act: ${d.avg_act}<br>Cluster: ${d.cluster}`);
         })
         .on('mouseleave', () => {
             tooltip.style("display", "none");
@@ -178,6 +201,177 @@ function drawScatter(data) {
     chartGroup.selectAll('.dots, .overlay ~ *').raise();
 }
 
+// Draw line plot for selected mice
+function drawLinePlot(selectedData) {
+    const svg = d3.select("svg#line-plot")
+        .attr("width", 800)
+        .attr("height", 400);
+
+    // Clear previous plot
+    svg.selectAll("*").remove();
+
+    if (selectedData.length === 0) {
+        svg.append("text")
+            .attr("x", 400)
+            .attr("y", 200)
+            .attr("text-anchor", "middle")
+            .attr("font-size", "16px")
+            .attr("fill", "black")
+            .text("No mice selected");
+        return;
+    }
+
+    // Log selected data for debugging
+    console.log("Selected data:", selectedData);
+
+    // Set up margins and dimensions
+    const margin = { top: 60, right: 100, bottom: 80, left: 60 };
+    const width = +svg.attr("width") - margin.left - margin.right;
+    const height = +svg.attr("height") - margin.top - margin.bottom;
+
+    const chartGroup = svg.append("g")
+        .attr("transform", `translate(${margin.left}, ${margin.top})`);
+
+    // Prepare activity data with error handling
+    const activityData = selectedData.map(d => {
+        const values = timePoints.map(t => {
+            const value = +d[t];
+            return isNaN(value) ? 0 : value; // Fallback to 0 for invalid values
+        });
+        console.log(`Activity values for ${d.name}:`, values); // Debug log
+        return { ...d, activity: values };
+    });
+
+    // X scale (time of day, 144 points)
+    const xScale = d3.scaleLinear()
+        .domain([0, 143])
+        .range([0, width]);
+
+    // Y scale (activity level)
+    const yMin = d3.min(activityData, d => d3.min(d.activity));
+    const yMax = d3.max(activityData, d => d3.max(d.activity));
+    console.log("Y scale domain:", [yMin, yMax]); // Debug log
+    const yScale = d3.scaleLinear()
+        .domain([Math.min(0, yMin), yMax]) // Include 0 if yMin is positive
+        .range([height, 0])
+        .nice();
+
+    // Line generator
+    const line = d3.line()
+        .x((d, i) => xScale(i))
+        .y(d => yScale(d))
+        .defined(d => !isNaN(d)); // Skip NaN values
+
+    // X axis (hourly ticks)
+    const hours = d3.range(24); // 0 to 23
+    const xAxis = d3.axisBottom(xScale)
+        .tickValues(hours.map(h => h * 6)) // Every hour (6 intervals)
+        .tickFormat(d => `${Math.floor(d / 6)}:00`);
+
+    chartGroup.append("g")
+        .attr("transform", `translate(0, ${height})`)
+        .call(xAxis)
+        .selectAll("text")
+        .attr("transform", "rotate(45)")
+        .attr("text-anchor", "start")
+        .attr("dx", "5px")
+        .attr("dy", "10px");
+
+    // X axis label
+    chartGroup.append("text")
+        .attr("x", width / 2)
+        .attr("y", height + 60)
+        .attr("text-anchor", "middle")
+        .attr("font-size", "12px")
+        .attr("fill", "black")
+        .text("Time of Day (10-min Intervals)");
+
+    // Y axis
+    chartGroup.append("g")
+        .call(d3.axisLeft(yScale));
+
+    // Y axis label
+    chartGroup.append("text")
+        .attr("transform", "rotate(-90)")
+        .attr("x", -height / 2)
+        .attr("y", -40)
+        .attr("text-anchor", "middle")
+        .attr("font-size", "12px")
+        .attr("fill", "black")
+        .text("Activity Level");
+
+    // Gridlines
+    chartGroup.append("g")
+        .attr("class", "grid")
+        .attr("transform", `translate(0, ${height})`)
+        .call(d3.axisBottom(xScale).tickSize(-height).tickFormat(""))
+        .selectAll("line")
+        .attr("stroke-opacity", 0.2);
+
+    chartGroup.append("g")
+        .attr("class", "grid")
+        .call(d3.axisLeft(yScale).tickSize(-width).tickFormat(""))
+        .selectAll("line")
+        .attr("stroke-opacity", 0.2);
+
+    // Plot lines for each mouse
+    const lines = chartGroup.selectAll(".line")
+        .data(activityData)
+        .enter()
+        .append("path")
+        .attr("class", "line")
+        .attr("fill", "none")
+        .attr("stroke", d => d.color)
+        .attr("stroke-width", 2)
+        .attr("d", d => line(d.activity))
+        .on("mouseover", function(event, d) {
+            d3.select(this)
+                .attr("stroke-width", 4); // Highlight line
+            lineTooltip
+                .style("display", "block")
+                .html(`<strong>${d.name}</strong><br>Gender: ${d.gender}<br>Temp: ${d.avg_temp}<br>Act: ${d.avg_act}<br>Cluster: ${d.cluster}`);
+        })
+        .on("mousemove", event => {
+            lineTooltip
+                .style("left", event.pageX + 10 + "px")
+                .style("top", event.pageY - 20 + "px");
+        })
+        .on("mouseout", function() {
+            d3.select(this)
+                .attr("stroke-width", 2); // Reset line
+            lineTooltip.style("display", "none");
+        });
+
+    // Title
+    chartGroup.append("text")
+        .attr("x", width / 2)
+        .attr("y", -20)
+        .attr("text-anchor", "middle")
+        .attr("font-size", "16px")
+        .attr("fill", "black")
+        .text("Average Activity of Selected Mice Over a Day (10-min Intervals)");
+
+    // Legend
+    const legend = chartGroup.append("g")
+        .attr("transform", `translate(${width + 10}, 0)`);
+
+    activityData.forEach((d, i) => {
+        legend.append("rect")
+            .attr("x", 0)
+            .attr("y", i * 20)
+            .attr("width", 15)
+            .attr("height", 15)
+            .attr("fill", d.color);
+
+        legend.append("text")
+            .attr("x", 20)
+            .attr("y", i * 20 + 12)
+            .attr("font-size", "12px")
+            .attr("fill", "black")
+            .text(d.name);
+    });
+}
+
 // Making brush to actually select dots
 function brushed(event) {
     const selection = event.selection;
@@ -191,6 +385,7 @@ function brushed(event) {
         });
 
     selectedMiceText(selectedData);
+    drawLinePlot(selectedData); // Draw line plot for selected mice
 }
 
 function isMouseSelected(selection, data) {
@@ -205,7 +400,7 @@ function selectedMiceText(selection) {
     const selectedIDs = selection.map(d => d.name); // Collect ID of selected mouse
 
     // Update text
-    const selectedDiv = d3.select("div#selected");
+    const selectedDiv = d3.select("div#text-info");
     // Clear previous text
     selectedDiv.selectAll("p").remove();
 
@@ -217,5 +412,5 @@ function selectedMiceText(selection) {
 }
 
 function drawAverage(data) {
-    
+    // Placeholder for average plot
 }
