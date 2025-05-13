@@ -14,6 +14,8 @@ const height = +svg_scatter.attr("height") - margin.top - margin.bottom;
 const chartGroup = svg_scatter.append("g")
     .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
+let xScale, yScale;
+
 // Tooltip setup
 const tooltip = d3.select("body")
     .append("div")
@@ -56,12 +58,13 @@ d3.json("mice/mice.json").then(data => {
 function drawScatter(data) {
     chartGroup.selectAll("*").remove(); // Clear previous plot
 
-    const x = d3.scaleLinear()
+    xScale = d3.scaleLinear()
         .domain(d3.extent(data, d => +d.avg_temp))
         .range([0, width])
         .nice();
 
-    const y = d3.scaleLinear()
+
+    yScale = d3.scaleLinear()
         .domain(d3.extent(data, d => +d.avg_act))
         .range([height, 0])
         .nice();
@@ -70,21 +73,21 @@ function drawScatter(data) {
     chartGroup.append("g")
         .attr("class", "grid")
         .attr("transform", `translate(0, ${height})`)
-        .call(d3.axisBottom(x).tickSize(-height).tickFormat(""))
+        .call(d3.axisBottom(xScale).tickSize(-height).tickFormat(""))
         .selectAll("line")
         .attr("stroke-opacity", 0.2);
 
     // Y gridlines
     chartGroup.append("g")
         .attr("class", "grid")
-        .call(d3.axisLeft(y).tickSize(-width).tickFormat(""))
+        .call(d3.axisLeft(yScale).tickSize(-width).tickFormat(""))
         .selectAll("line")
         .attr("stroke-opacity", 0.2);
 
     // X axis with label
     chartGroup.append("g")
         .attr("transform", `translate(0, ${height})`)
-        .call(d3.axisBottom(x));
+        .call(d3.axisBottom(xScale));
 
     chartGroup.append("text")
         .attr("x", width / 2)
@@ -95,7 +98,7 @@ function drawScatter(data) {
 
     // Y axis with label
     chartGroup.append("g")
-        .call(d3.axisLeft(y));
+        .call(d3.axisLeft(yScale));
 
     chartGroup.append("text")
         .attr("transform", "rotate(-90)")
@@ -111,8 +114,8 @@ function drawScatter(data) {
         .data(data)
         .enter()
         .append("circle")
-        .attr("cx", d => x(+d.avg_temp))
-        .attr("cy", d => y(+d.avg_act))
+        .attr("cx", d => xScale(+d.avg_temp))
+        .attr("cy", d => yScale(+d.avg_act))
         .attr("r", 6)
         .attr("fill", d => d.color)
         .attr("stroke", "black")
@@ -135,8 +138,8 @@ function drawScatter(data) {
         .data(data)
         .enter()
         .append("text")
-        .attr("x", d => x(+d.avg_temp))
-        .attr("y", d => y(+d.avg_act) - 8)
+        .attr("x", d => xScale(+d.avg_temp))
+        .attr("y", d => yScale(+d.avg_act) - 8)
         .attr("text-anchor", "middle")
         .attr("font-size", "10px")
         .text(d => d.name);
@@ -149,43 +152,39 @@ function drawScatter(data) {
 }
 
 // Setting up the brush
-const brush = d3.brush()
-    .extent([[0, 0], [width, height]])
-    .on("end", brushed);
-
-chartGroup.append("g")
-    .attr("class", "brush")
-    .call(brush);
-
-function brushed(event) {
-const selection = event.selection;
-if (!selection) return;
-console.log(selection)
-const [[x0, y0], [x1, y1]] = selection;
-
-// Filter data based on the brush selection
-const filteredData = allMice.filter(d => {
-    const tempX = x(d.avg_temp);
-    const tempY = y(d.avg_act);
-    return tempX >= x0 && tempX <= x1 && tempY >= y0 && tempY <= y1;
-});
-
-// Clear the brush selection
-chartGroup.select(".brush").call(brush.move, null);
-
-// Update visualization with filtered data
-drawScatter(filteredData);
+function createBrushSelector(svg) {
+    svg.call(d3.brush());
 }
 
+// Making brush to actually select dots
+function brushed(event) {
+    console.log(event);
+    const selection = event.selection;
+    chartGroup.selectAll('circle').classed('selected', (d) =>
+      isMouseSelected(selection, d),
+    );
+    console.log(selection)
+    selectedMiceText(selection)
+  }
 
-function isMiceSelected(selection, mice) {
+
+function isMouseSelected(selection, data) {
+    if (!selection) {
+      return false;
+    }
     // Return true if commit is within brushSelection
     // and false if not
     if (!selection) { 
         return false; } 
-    console.log(selection)
-    return selection; 
-  }
+    const [x0, x1] = selection.map((d) => d[0]); 
+    const [y0, y1] = selection.map((d) => d[1]); 
+    return xScale >= x0 && xScale <= x1 && yScale >= y0 && yScale <= y1; 
+}
+
+function selectedMiceText(selection) {
+    const selected_p = d3.select("p#selected")
+    selected_p.text(`number selected: ${selection.length || "ZERO"}`)
+}
 
 function drawAverage(data){
 
