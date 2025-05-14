@@ -11,13 +11,42 @@
 </head>
 <body>
     <p></p>
-    <p>A rationale for your design decisions.
-        How did you choose your particular visual encodings and interaction techniques? 
-        What alternatives did you consider and how did you arrive at your ultimate choices?
-
-        An overview of your development process. Describe how the work was split among the team members. 
-        Include a commentary on the development process, including answers to the following questions: 
-        Roughly how much time did you spend developing your application (in people-hours)? 
-        What aspects took the most time?</p>
+    <p>
+        In our project 3, we decided to start off with a scatterplot showcasing the average temperature of each mice 
+        in accordance to their average activity level, with each mouse labeled by their respective mouse ID, gender, 
+        temperature, and activity. Then, users would be able to toggle buttons relating to attributes of the mouse 
+        (gender, activity, etc…). Initially, we intended to have questions that acted as a toggle to find the mouse
+         that best matched the users interest. In this case, the toggle would have only a yes or no option, and mice 
+         that were similar to what the user selected (ie. female) would be displayed. Essentially, we would be filtering
+          the scatterplot—keeping the same axis on both sides—but changing which mice are displayed based on their 
+          features and the features that were selected by the user. However, after implementing this, we wanted to 
+          incorporate more of an interactive element to our website in addition to the toggles, so taking what we learned 
+          from lab 6, we incorporated the brushing technique to allow the user to select a subset of the mice. From here, 
+          we wanted to showcase each individual mice’s features more, such that the user could pinpoint which mouse would 
+          be most similar to themselves. To do so, we added a line chart that showcased each of the average activity 
+          levels of the selected mice over a day (in 10 minute intervals) in addition to the scatter plot. We decided 
+          to implement this line chart in addition to the original scatterplot because we believed it would provide a 
+          more visual representation of individual mice and their activity levels, and it would allow users to see more
+           details and intricate trends that might not have been able to be seen from the scatterplot alone. Looking at 
+           the some specific visual encodings, in both the line plot and the scatter plot.
+    </p>
+    
+    <p>
+        For the overall project, we split up into 2 groups—Flavia and Alyx, and Grace and Jennifer. 
+        For the checkpoint, we spent roughly 4 hours all together (3 hours for developing and making the charts, 
+        and 1 hour for setting up the website). From the checkpoint, Flavia and Alyx focused on making the graphs 
+        and the video submission, while Grace and Jennifer focused on the title/question as well as making progress 
+        with the website. From the checkpoint to the final project, all 4 of us collectively spent around 4 hours as
+         well. Flavia and Alyx focused on the plotting aspects, while Grace and Jennifer worked on the html side (ie. 
+         building toggles/switches) and the JS side (event listener to translate the toggle inputs into filtering queues). 
+         This accounts for setting up the interactive elements such as making the toggles work, as well as implementing 
+         the brushing technique to be able to select a subset of the mice to draw subsequent activity charts with. 
+         One of the most time-consuming parts of this project was getting the selection box to function correctly. 
+         This included translating the selected area into individual mice, ensuring that each selected mouse's ID was
+          displayed, and accurately updating the count to reflect the total number of mice selected. Another challenging
+           area that we came across was making updates in the graph while not breaking anything beforehand and ensuring 
+           everything worked properly. 
+        
+    </p>
 </body>
 </html>
