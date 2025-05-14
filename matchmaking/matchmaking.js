@@ -177,7 +177,7 @@ function drawScatter(data) {
         .on('mouseenter', (event, d) => {
             tooltip
                 .style("display", "block")
-                .html(`<strong>${d.name}</strong><br>Gender: ${d.gender}<br>Avg Temperature: ${d.avg_temp}<br>Avg Activity: ${d.avg_act}`);
+                .html(`<strong>${d.name}</strong><br>Gender: ${d.gender}<br>Avg. Temperature: ${d.avg_temp}<br>Avg. Activity: ${d.avg_act}`);
         })
         .on('mouseleave', () => {
             tooltip.style("display", "none");

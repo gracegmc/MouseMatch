@@ -72,13 +72,11 @@
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
     text-decoration: none;
-  }
-  
+}
   .mice a {
     text-decoration: none;
     color: inherit;
   }
-  
   .mice article {
     display: grid;
     grid-template-rows: subgrid;
@@ -97,22 +95,22 @@
       display: block; /* Remove any weird extra space below images */
     }
   }
-<<<<<<< HEAD
 
-  /* graph stuff */
-  .tooltip {
-    font-size: 12px;
-    pointer-events: none;
-    position: absolute;
-    z-index: 10;
-    background: white;
-    border: 1px solid #aaa;
-    border-radius: 4px;
-    padding: 4px 8px;
-    box-shadow: 0 0 5px rgba(0,0,0,0.1);
-  }
+/* graph stuff */
+.tooltip {
+  font-size: 12px;
+  pointer-events: none;
+  position: absolute;
+  z-index: 10;
+  background: white;
+  border: 1px solid #aaa;
+  border-radius: 4px;
+  padding: 4px 8px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
 
-  .button {
+/* index.html button formatting */
+.button {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -132,3 +130,54 @@
         }
     }
   }
+
+/* gender/cluster toggle */
+/* Container styling */
+.container {
+  max-width: 400px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #fff2fb;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Form group spacing */
+.form-group {
+  margin-bottom: 20px;
+}
+
+/* Label styling */
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #333;
+}
+
+/* Select dropdown styling */
+.form-group select {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  appearance: none; /* Remove default arrow */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("images/down-arrow.png");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 10px;
+  cursor: pointer;
+}
+
+/* Focus state for select */
+.form-group select:focus {
+  border-color: #ffb3cb;
+  outline: none;
+  box-shadow: 0 0 5px #ff78a2;
+}
+
